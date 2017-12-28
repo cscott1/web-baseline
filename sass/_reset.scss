@@ -1,0 +1,128 @@
+*{
+  box-sizing:border-box;
+  outline:0!important;
+  font-family:sans-serif;
+  font-style:normal;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display:block;
+}
+
+html,
+body{
+  min-height:100%;
+}
+
+html{
+  font-size:62.5%;
+  height:100%;
+  width:100%;
+  font-weight:400;
+}
+
+body{
+  overflow-y:scroll;
+  overflow-x:hidden;
+  line-height:1;
+  width:100%;
+  &.stop-scrolling {
+    height:100%;
+    overflow:hidden;
+  }
+}
+
+ol,
+ul{
+  list-style:none;
+}
+
+blockquote,
+q{
+  quotes:none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after{
+  content:'';
+}
+
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+strong{
+  font-weight:500;
+}
+
+a,
+button,
+label{
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  padding:0;
+}
+
+label,
+input,
+select,
+textarea,
+button{
+
+}
+
+input,
+select,
+textarea{
+}
+
+// Fixes Chrome Yellow AutoFil Placeholder
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow:0 0 0px 1000px white inset;
+  background-image:initial;
+}
+
+// Removes the increment / decrement option on number inputs
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance:none;
+  display:none;
+}
+
+// Removes undesirable Google Maps elements from maps
+a[href^="http://maps.google.com/maps"],
+a[href^="https://maps.google.com/maps"],
+a[href^="https://www.google.com/maps"] {
+  display:none!important;
+}
+.gm-bundled-control .gmnoprint {
+  display:block;
+}

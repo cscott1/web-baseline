@@ -1,0 +1,157 @@
+
+// Breakpoints
+// ==============
+// This allows easy insertion of media queries into elements
+// USAGE: @include breakpoint(850){width:75%} // Sets the width of an element to 75% if the viewport is thinner than 850 pixels.
+
+@mixin breakpoint($point) {
+  @if $point == 1500 {
+    @media (max-width: 1500px) { @content;}
+  }
+  @if $point == 1200 {
+    @media (max-width: 1200px) { @content;}
+  }
+  @if $point == 850 {
+    @media (max-width: 850px) { @content;}
+  }
+  @else if $point == phone {
+    @media (max-width: 550px) { @content;}
+  }
+}
+
+
+// Clearfix
+// ==============
+// CSS only clearfix mixin to prevent clearfix class.
+// USAGE: @include clearfix();// Clears div to intended pre-float height.
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// transform
+// ==============
+// Browser prefixing for transform css property
+// USAGE: @include transform(rotate(45deg));
+
+@mixin transform($property){
+  -ms-transform:$property;
+  -webkit-transform:$property;
+  -moz-transform:$property;
+  transform:$property;
+}
+
+// Centervert // Centerhoriz
+// ==============
+// Centres a div vertically without the need for a height or absolute positioning
+// USAGE: @include clearfix();// Clears div to intended pre-float height.
+
+@mixin centervert() {
+  position: absolute;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+@mixin centerhoriz() {
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
+}
+
+@mixin centerboth() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translateX(-50%) translateY(-50%));
+}
+
+//Icons
+//==============
+//Creates a background image with an icon of your choice and sizing of your choice.
+//USAGE: @include icon(search, 40px);// Gives the search icon at a 40px size.
+
+@mixin icon($src, $size) {
+  background-image: url('../images/icons/'+$src+'.svg');
+  background-repeat:no-repeat;
+  background-position:center center;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  background-size: $size;
+}
+
+// Transition
+// ==============
+// Adds one line transitions.
+// USAGE: @include transition(.5s ease-out);// Gives the elemtent a 0.5 transition easing out.
+
+@mixin transition($time, $method) {
+  -webkit-transition: all $time $method;
+  -moz-transition: all $time $method;
+  -ms-transition: all $time $method;
+  transition: all $time $method;
+}
+
+// Placeholder
+// ==============
+// Multi browser support for placeholder attribute
+// USAGE: @include placeholder($black);// Makes the placeholder coloured black as per _basecolours.sass
+
+@mixin placeholder($colour) {
+  &::-webkit-input-placeholder {
+    color: $colour;
+  }
+  &:-moz-placeholder {
+    color: $colour;
+  }
+  &::-moz-placeholder {
+    color: $colour;
+  }
+  &:-ms-input-placeholder {
+    color: $colour;
+  }
+}
+
+// Triangle
+// ==============
+// Adds all classes for the handling of colours
+// USAGE: @include arrow((direction: 'right',color: orange, size: 30px));
+// **NOTE** Notice the two brackets when using the mixin
+
+@mixin arrow($settings){
+
+	//Map settings
+	$arrow-direction: map-get($settings, direction);
+	$arrow-color: map-get($settings, color);
+	$arrow-size: map-get($settings, size);
+
+	//Generic settings
+	width: 0;
+	height: 0;
+	display: inline-block;
+
+	//Arrow main statement
+	@if ($arrow-direction == down){
+		border-left: $arrow-size solid transparent;
+		border-right: $arrow-size solid transparent;
+		border-top: $arrow-size solid $arrow-color;
+	} @else if ($arrow-direction == up) {
+		border-left: $arrow-size solid transparent;
+		border-right: $arrow-size solid transparent;
+		border-bottom: $arrow-size solid $arrow-color;
+	} @else if ($arrow-direction == left){
+		border-top: $arrow-size solid transparent;
+		border-bottom: $arrow-size solid transparent;
+		border-right: $arrow-size solid $arrow-color;
+	} @else if ($arrow-direction == right){
+		border-top: $arrow-size solid transparent;
+		border-bottom: $arrow-size solid transparent;
+		border-left: $arrow-size solid $arrow-color;
+	}
+}
