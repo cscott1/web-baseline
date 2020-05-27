@@ -4,7 +4,8 @@ const Cssnano = require('gulp-cssnano')
 const Imagemin = require('gulp-imagemin');
 
 Gulp.task('watch', function () {
-  Gulp.watch('sass/**/*.scss', ['compile_css','optimise_jpgs'])
+  Gulp.watch('sass/**/*.scss', Gulp.series('compile_css'))
+  Gulp.watch('sass/**/*.scss', Gulp.series('optimise_jpgs'))
 })
 
 Gulp.task('compile_css', function () {
